@@ -1,0 +1,39 @@
+{{! Header partial — displays name, tagline, and contact info }}
+<header style="
+  background: linear-gradient(135deg, #0d0d2b 0%, #1a0a2e 100%);
+  border: 1px solid #2a2a4a;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+">
+  <h1 style="
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    text-shadow: 0 0 20px #00d4ff55;
+    margin-bottom: 0.4rem;
+  ">
+    {{! uses the 'uppercase' custom helper }}
+    {{ uppercase name }}
+  </h1>
+
+  <p style="color: #00d4ff; font-size: 1rem; margin-bottom: 1rem;">
+    {{ tagline }}
+  </p>
+
+  <div style="
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    font-size: 0.82rem;
+    color: #8080a0;
+  ">
+    <span>📧 {{ email }}</span>
+    <span>📍 {{ location }}</span>
+    <span>🐙 {{ github }}</span>
+    <span>💼 {{ linkedin }}</span>
+  </div>
+</header>

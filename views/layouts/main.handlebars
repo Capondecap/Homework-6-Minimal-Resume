@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{name}} — Resume</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f0f1a;
+      color: #e0e0e0;
+      min-height: 100vh;
+    }
+
+    .page-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ── Sections ── */
+    .section {
+      background: #1a1a2e;
+      border: 1px solid #2a2a4a;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #00d4ff;
+      text-transform: uppercase;
+      border-bottom: 1px solid #2a2a4a;
+      padding-bottom: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: #12122a;
+      border: 1px solid #2a2a4a;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card:last-child { margin-bottom: 0; }
+    .card.highlight { border-color: #00d4ff55; }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: #a0a0c0;
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+    }
+
+    /* ── Tags ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+
+    .tag {
+      background: #1e1e3f;
+      border: 1px solid #3a3a6a;
+      color: #a0c4ff;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 20px;
+    }
+
+    /* ── Skill grid ── */
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-cat-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #c0c0ff;
+      margin-bottom: 0.6rem;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: #b0b0d0;
+      padding: 0.2rem 0;
+    }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .badge-completed {
+      background: #003d1f;
+      color: #00ff88;
+      border: 1px solid #00ff8840;
+    }
+
+    .badge-progress {
+      background: #2a1a00;
+      color: #ffaa00;
+      border: 1px solid #ffaa0040;
+    }
+
+    .badge-current {
+      background: #001a3d;
+      color: #00aaff;
+      border: 1px solid #00aaff40;
+    }
+
+    /* ── Interest pills ── */
+    .interests { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .interest-pill {
+      background: #1a1a3a;
+      border: 1px solid #3a3a6a;
+      color: #c0c0ff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+    }
+
+    /* ── Utilities ── */
+    .empty-note {
+      color: #666;
+      font-style: italic;
+      font-size: 0.88rem;
+    }
+
+    .senior-banner {
+      background: #1a2a1a;
+      border: 1px solid #004400;
+      color: #00cc44;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    {{> header}}
+
+    {{{body}}}
+
+    {{> footer}}
+
+  </div>
+</body>
+</html>

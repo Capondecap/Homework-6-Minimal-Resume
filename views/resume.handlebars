@@ -1,0 +1,158 @@
+{{! ═══════════════════════════════════════════════ }}
+{{!   RESUME VIEW — demonstrates:                  }}
+{{!   • Render context (all data from app.js)       }}
+{{!   • Partials (header, footer in layout)         }}
+{{!   • Sections (Summary, Skills, Projects, etc.)  }}
+{{!   • Helpers: uppercase, levelBadge, eq          }}
+{{!   • Built-ins: #if, #each, #unless              }}
+{{! ═══════════════════════════════════════════════ }}
+
+
+{{!-- ── OBJECTIVE ── --}}
+<div class="section">
+  <h2 class="section-title">🎯 Career Objective</h2>
+  <p style="color: #c0c0d8; line-height: 1.7; font-size: 0.92rem;">{{ objective }}</p>
+</div>
+
+
+{{!-- ── PROFESSIONAL SUMMARY ── --}}
+<div class="section">
+  <h2 class="section-title">👤 Professional Summary</h2>
+  <p style="color: #c0c0d8; line-height: 1.7; font-size: 0.92rem;">{{ summary }}</p>
+</div>
+
+
+{{!-- ── EDUCATION ── --}}
+<div class="section">
+  <h2 class="section-title">🎓 Education</h2>
+
+  {{! #each iterates over the education array }}
+  {{#each education}}
+    <div class="card">
+      <div class="card-title">
+        {{ degree }}
+
+        {{! #if checks the `current` boolean flag }}
+        {{#if current}}
+          <span class="badge badge-current">Current</span>
+        {{else}}
+          <span class="badge badge-completed">Graduated</span>
+        {{/if}}
+      </div>
+
+      <div style="color: #8080a0; font-size: 0.85rem; margin-top: 0.2rem;">
+        {{ school }} · {{ status }}
+      </div>
+    </div>
+  {{/each}}
+
+  {{! #unless checks if education list is empty }}
+  {{#unless education}}
+    <p class="empty-note">No education records listed.</p>
+  {{/unless}}
+</div>
+
+
+{{!-- ── TECHNICAL SKILLS ── --}}
+<div class="section">
+  <h2 class="section-title">🔧 Technical Skills</h2>
+
+  <div class="skill-grid">
+
+    {{! #each over skillCategories array }}
+    {{#each skillCategories}}
+      <div class="card" style="padding: 1rem;">
+        <div class="skill-cat-title"> {{ category }}</div>
+
+        {{! #each over skills within each category }}
+        {{#each skills}}
+          <div class="skill-item">
+
+            {{! Custom helper: levelBadge returns an emoji by level }}
+            {{ levelBadge level }}
+            {{ name }}
+          </div>
+        {{/each}}
+
+        {{! #unless: show message if category has no skills }}
+        {{#unless skills}}
+          <p class="empty-note">No skills listed for this category.</p>
+        {{/unless}}
+
+      </div>
+    {{/each}}
+
+  </div>
+
+  {{! Skill level legend }}
+  <div style="margin-top: 1rem; font-size: 0.75rem; color: #555577; display: flex; gap: 1rem; flex-wrap: wrap;">
+    <span>🟢 Beginner</span>
+    <span>🟡 Intermediate</span>
+    <span>🔴 Advanced</span>
+  </div>
+</div>
+
+
+{{!-- ── PROJECTS ── --}}
+<div class="section">
+  <h2 class="section-title">🚀 Projects</h2>
+
+  {{#each projects}}
+    {{! #if checks the `highlight` flag to add a special class }}
+    {{#if highlight}}
+      <div class="card highlight">
+    {{else}}
+      <div class="card">
+    {{/if}}
+
+      <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.4rem;">
+        <span class="card-title">{{ name }}</span>
+
+        {{! #if checks `completed` status }}
+        {{#if completed}}
+          <span class="badge badge-completed">✓ Completed</span>
+        {{else}}
+          <span class="badge badge-progress">⟳ In Progress</span>
+        {{/if}}
+
+        {{! #if checks if it's the highlighted/featured project }}
+        {{#if highlight}}
+          <span class="badge" style="background:#0a1a2a;color:#00d4ff;border:1px solid #00d4ff40;">⭐ Featured</span>
+        {{/if}}
+      </div>
+
+      <p class="card-desc">{{ description }}</p>
+
+      {{! #if checks that the tags array exists and is non-empty before rendering }}
+      {{#if tags}}
+        <div class="tags">
+          {{#each tags}}
+            <span class="tag">{{ this }}</span>
+          {{/each}}
+        </div>
+      {{/if}}
+
+    </div>
+  {{/each}}
+
+  {{! #unless: warn if no projects provided }}
+  {{#unless projects}}
+    <p class="empty-note">No projects listed yet.</p>
+  {{/unless}}
+</div>
+
+
+{{!-- ── INTERESTS ── --}}
+<div class="section">
+  <h2 class="section-title">💡 Interests & Focus Areas</h2>
+
+  {{#if interests}}
+    <div class="interests">
+      {{#each interests}}
+        <span class="interest-pill">{{ this }}</span>
+      {{/each}}
+    </div>
+  {{else}}
+    <p class="empty-note">No interests listed.</p>
+  {{/if}}
+</div>
